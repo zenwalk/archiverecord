@@ -1,0 +1,367 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8DB60BEA-B126-4ACD-ABF2-7CC17A182AAE}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>ArchiveRecord</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ArchiveRecord</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="acdbmgd, Version=18.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Program Files\Autodesk\AutoCAD 2010\acdbmgd.dll</HintPath>
+    </Reference>
+    <Reference Include="acmgd, Version=18.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Program Files\Autodesk\AutoCAD 2010\acmgd.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.ADF, Version=9.2.0.1177, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\DotNet\ESRI.ArcGIS.ADF.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.AxControls">
+      <Name>ESRI.ArcGIS.AxControls</Name>
+      <HintPath>..\..\..\..\..\DotNet\ESRI.ArcGIS.AxControls.dll</HintPath>
+      <AssemblyFolderKey>hklm\dn\arcgis desktop</AssemblyFolderKey>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Carto">
+      <Name>ESRI.ArcGIS.Carto</Name>
+      <HintPath>..\..\..\..\..\DotNet\ESRI.ArcGIS.Carto.dll</HintPath>
+      <AssemblyFolderKey>hklm\dn\arcgis desktop</AssemblyFolderKey>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Controls">
+      <Name>ESRI.ArcGIS.Controls</Name>
+      <HintPath>..\..\..\..\..\DotNet\ESRI.ArcGIS.Controls.dll</HintPath>
+      <AssemblyFolderKey>hklm\dn\arcgis desktop</AssemblyFolderKey>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Display">
+      <Name>ESRI.ArcGIS.Display</Name>
+      <HintPath>..\..\..\..\..\DotNet\ESRI.ArcGIS.Display.dll</HintPath>
+      <AssemblyFolderKey>hklm\dn\arcgis desktop</AssemblyFolderKey>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geodatabase">
+      <Name>ESRI.ArcGIS.Geodatabase</Name>
+      <HintPath>..\..\..\..\..\DotNet\ESRI.ArcGIS.Geodatabase.dll</HintPath>
+      <AssemblyFolderKey>hklm\dn\arcgis desktop</AssemblyFolderKey>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geometry">
+      <Name>ESRI.ArcGIS.Geometry</Name>
+      <HintPath>..\..\..\..\..\DotNet\ESRI.ArcGIS.Geometry.dll</HintPath>
+      <AssemblyFolderKey>hklm\dn\arcgis desktop</AssemblyFolderKey>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.System">
+      <Name>ESRI.ArcGIS.System</Name>
+      <HintPath>..\..\..\..\..\DotNet\ESRI.ArcGIS.System.dll</HintPath>
+      <AssemblyFolderKey>hklm\dn\arcgis desktop</AssemblyFolderKey>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.SystemUI">
+      <Name>ESRI.ArcGIS.SystemUI</Name>
+      <HintPath>..\..\..\..\..\DotNet\ESRI.ArcGIS.SystemUI.dll</HintPath>
+      <AssemblyFolderKey>hklm\dn\arcgis desktop</AssemblyFolderKey>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Utility, Version=9.2.0.1324, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Program Files\ArcGIS\DotNet\ESRI.ArcGIS.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
+    <Reference Include="Office, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <COMReference Include="AutoCAD">
+      <Guid>{D32C213D-6096-40EF-A216-89A3A6FB82F7}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="AxXtremeCommandBars">
+      <Guid>{555E8FCC-830E-45CC-AF00-A012D5AE7451}</Guid>
+      <VersionMajor>10</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="AxXtremeDockingPane">
+      <Guid>{945E8FCC-830E-45CC-AF00-A012D5AE7451}</Guid>
+      <VersionMajor>10</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+    </COMReference>
+    <COMReference Include="XtremeCommandBars">
+      <Guid>{555E8FCC-830E-45CC-AF00-A012D5AE7451}</Guid>
+      <VersionMajor>10</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="XtremeDockingPane">
+      <Guid>{945E8FCC-830E-45CC-AF00-A012D5AE7451}</Guid>
+      <VersionMajor>10</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App.ico" />
+    <EmbeddedResource Include="frmFlash.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmFlash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmlayerToc.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmlayerToc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainNew.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmMainNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOperation.resx">
+      <DependentUpon>frmOperation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPano.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmPano.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpenNewMapDocument.bmp" />
+    <Compile Include="assemblyinfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ControlsSynchronizer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="frmArchivePane.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmArchivePane.Designer.cs">
+      <DependentUpon>frmArchivePane.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAttribute.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAttribute.Designer.cs">
+      <DependentUpon>frmAttribute.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFlash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFlash.Designer.cs">
+      <DependentUpon>frmFlash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmlayerToc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmlayerToc.Designer.cs">
+      <DependentUpon>frmlayerToc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainNew.Designer.cs">
+      <DependentUpon>frmMainNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmOperation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOperation.Designer.cs">
+      <DependentUpon>frmOperation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPano.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPano.Designer.cs">
+      <DependentUpon>frmPano.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQueryPan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmQueryPan.Designer.cs">
+      <DependentUpon>frmQueryPan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Globe\FilePathInfo.cs" />
+    <Compile Include="Globe\ForAR.cs" />
+    <Compile Include="Globe\ModEditOperations.cs" />
+    <Compile Include="Maps.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OpenNewMapDocument.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <EmbeddedResource Include="frmArchivePane.resx">
+      <DependentUpon>frmArchivePane.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAttribute.resx">
+      <DependentUpon>frmAttribute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQueryPan.resx">
+      <DependentUpon>frmQueryPan.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
