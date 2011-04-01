@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="BusInfo">
+</Property><Property Name="解决方案文件" Value="E:\Code For Working\BusInfo\BusInfo.sln">
+</Property><Property Name="用户选项文件" Value="E:\Code For Working\BusInfo\BusInfo.suo">
+</Property><Property Name="Date" Value="2010年12月22日">
+</Property><Property Name="Time" Value="9:01">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="BusInfo.sln" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\BusInfo.sln">
+</Event><Event ErrorLevel="0" Project="" Source="BusInfo.suo" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\BusInfo.suo">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="BusInfo.csproj" Description="项目文件已成功备份为 E:\Code For Working\BusInfo\Backup\BusInfo.csproj">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="BusInfo.csproj.user" Description="项目用户文件成功备份为 E:\Code For Working\BusInfo\Backup\BusInfo.csproj.user">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="assemblyinfo.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\assemblyinfo.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="ControlsSynchronizer.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\ControlsSynchronizer.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmFlash.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmFlash.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmFlash.Designer.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmFlash.Designer.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmlayerToc.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmlayerToc.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmlayerToc.Designer.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmlayerToc.Designer.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmMainNew.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmMainNew.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmMainNew.Designer.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmMainNew.Designer.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmPano.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmPano.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmPano.Designer.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmPano.Designer.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmRoadAllInfo.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmRoadAllInfo.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmRoadAllInfo.Designer.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmRoadAllInfo.Designer.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmRoadAndStation.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmRoadAndStation.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmRoadAndStation.Designer.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmRoadAndStation.Designer.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmRoadPane.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmRoadPane.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmRoadPane.Designer.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmRoadPane.Designer.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmStationAllInfo.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmStationAllInfo.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmStationAllInfo.Designer.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmStationAllInfo.Designer.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmStationPane.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmStationPane.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmStationPane.Designer.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmStationPane.Designer.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmStationPara.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmStationPara.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmStationPara.Designer.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmStationPara.Designer.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmRoadPara.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmRoadPara.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmRoadPara.Designer.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmRoadPara.Designer.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="Globe\ForBusInfo.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\Globe\ForBusInfo.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="Globe\ModEditOperations.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\Globe\ModEditOperations.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="Maps.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\Maps.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="OpenNewMapDocument.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\OpenNewMapDocument.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="Properties\Resources.Designer.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\Properties\Resources.Designer.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="Properties\Settings.Designer.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\Properties\Settings.Designer.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="RoadDataSet.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\RoadDataSet.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="RoadDataSet.Designer.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\RoadDataSet.Designer.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="Settings.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\Settings.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="StationDataSet.Designer.cs" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\StationDataSet.Designer.cs">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="app.config" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\app.config">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="Properties\Settings.settings" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\Properties\Settings.settings">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="RoadDataSet.xsc" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\RoadDataSet.xsc">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="RoadDataSet.xsd" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\RoadDataSet.xsd">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="RoadDataSet.xss" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\RoadDataSet.xss">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="StationDataSet.xsc" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\StationDataSet.xsc">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="StationDataSet.xsd" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\StationDataSet.xsd">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="StationDataSet.xss" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\StationDataSet.xss">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="App.ico" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\App.ico">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmFlash.resx" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmFlash.resx">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmlayerToc.resx" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmlayerToc.resx">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmMainNew.resx" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmMainNew.resx">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmPano.resx" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmPano.resx">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmRoadAllInfo.resx" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmRoadAllInfo.resx">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmRoadAndStation.resx" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmRoadAndStation.resx">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmRoadPane.resx" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmRoadPane.resx">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmStationAllInfo.resx" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmStationAllInfo.resx">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmStationPane.resx" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmStationPane.resx">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmStationPara.resx" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmStationPara.resx">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="frmRoadPara.resx" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\frmRoadPara.resx">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="OpenNewMapDocument.bmp" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\OpenNewMapDocument.bmp">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="Properties\Resources.resx" Description="文件已成功备份为 E:\Code For Working\BusInfo\Backup\Properties\Resources.resx">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="BusInfo.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="BusInfo" Source="BusInfo.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="BusInfo.sln" Description="成功转换解决方案">
+</Event><Event ErrorLevel="3" Project="" Source="BusInfo.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="BusInfo" Source="BusInfo.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event></UpgradeLog>
