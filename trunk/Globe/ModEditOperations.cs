@@ -882,7 +882,46 @@ namespace ArchiveRecord.Globe
                 break;
             }
           }
-        
+
+        public static void ZoomTo(IGeometry pGeo)
+        {
+            IEnvelope pEnvelope;
+            switch (pGeo.GeometryType)
+            {
+                case esriGeometryType.esriGeometryPoint:
+                    IPoint pPoint;
+                    IDisplayTransformation pDisplayTransformation;
+                    pDisplayTransformation = EngineFuntions.m_AxMapControl.ActiveView.ScreenDisplay.DisplayTransformation;
+                    pEnvelope = pGeo.Envelope;
+                    pPoint = pEnvelope.UpperLeft;
+                    pEnvelope = pDisplayTransformation.VisibleBounds;
+                    pEnvelope.CenterAt(pPoint);
+                    pDisplayTransformation.VisibleBounds = pEnvelope;
+                    EngineFuntions.m_AxMapControl.Map.MapScale = 2000;
+                    pDisplayTransformation.VisibleBounds = EngineFuntions.m_AxMapControl.ActiveView.Extent;
+                    EngineFuntions.m_AxMapControl.ActiveView.ScreenDisplay.Invalidate(null, true, (short)esriScreenCache.esriAllScreenCaches);
+                    Application.DoEvents();
+                    FlashShape(pGeo);
+                    break;
+                case esriGeometryType.esriGeometryPolyline:
+                    pEnvelope = pGeo.Envelope;
+                    pEnvelope.Expand(2, 2, true);
+                    EngineFuntions.m_AxMapControl.ActiveView.Extent = pEnvelope;
+                    EngineFuntions.m_AxMapControl.ActiveView.ScreenDisplay.Invalidate(null, true, (short)esriScreenCache.esriAllScreenCaches);
+                    System.Windows.Forms.Application.DoEvents();
+                    FlashShape(pGeo);
+                    break;
+                case esriGeometryType.esriGeometryPolygon:
+                    pEnvelope = pGeo.Envelope;
+                    pEnvelope.Expand(2, 2, true);
+                    EngineFuntions.m_AxMapControl.ActiveView.Extent = pEnvelope;
+                    EngineFuntions.m_AxMapControl.ActiveView.ScreenDisplay.Invalidate(null, true, (short)esriScreenCache.esriAllScreenCaches);
+                    System.Windows.Forms.Application.DoEvents();
+                    FlashShape(pGeo);
+                    break;
+            }
+        }
+
         //public static List<IFeature> SortByDist(IFeature pFeature, List<IFeature> pFeatureCol)
         //{
         //    IPolyline pPolyline = (IPolyline)pFeature.Shape;

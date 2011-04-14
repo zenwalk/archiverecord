@@ -36,6 +36,7 @@
             this.axDockingPane1 = new AxXtremeDockingPane.AxDockingPane();
             this.helpProvider2 = new System.Windows.Forms.HelpProvider();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axLicenseControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).BeginInit();
@@ -52,9 +53,9 @@
             this.panel1.Controls.Add(this.axMapControl1);
             this.panel1.Controls.Add(this.axCommandBars1);
             this.panel1.Controls.Add(this.axDockingPane1);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(0, 86);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(702, 504);
+            this.panel1.Size = new System.Drawing.Size(741, 419);
             this.panel1.TabIndex = 1;
             // 
             // axLicenseControl1
@@ -82,7 +83,7 @@
             // 
             this.axCommandBars1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.axCommandBars1.Enabled = true;
-            this.axCommandBars1.Location = new System.Drawing.Point(90, 130);
+            this.axCommandBars1.Location = new System.Drawing.Point(109, 87);
             this.axCommandBars1.Name = "axCommandBars1";
             this.axCommandBars1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axCommandBars1.OcxState")));
             this.axCommandBars1.Size = new System.Drawing.Size(24, 24);
@@ -107,16 +108,25 @@
             this.folderBrowserDialog1.RootFolder = System.Environment.SpecialFolder.MyComputer;
             this.folderBrowserDialog1.ShowNewFolderButton = false;
             // 
+            // panel2
+            // 
+            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1280, 86);
+            this.panel2.TabIndex = 2;
+            // 
             // frmMainNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 503);
+            this.ClientSize = new System.Drawing.Size(739, 503);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.helpProvider2.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.Topic);
             this.Name = "frmMainNew";
             this.helpProvider2.SetShowHelp(this, true);
-            this.Text = "湛江工程录入系统";
+            this.Text = "湛江市地理信息公共服务平台-工程档案管理系统";
             this.Load += new System.EventHandler(this.frmMainNew_Load);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMainNew_FormClosed);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMainNew_FormClosing);
@@ -138,6 +148,7 @@
         internal ESRI.ArcGIS.Controls.AxMapControl axMapControl1;
         private System.Windows.Forms.HelpProvider helpProvider2;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.Panel panel2;
 
     }
 }

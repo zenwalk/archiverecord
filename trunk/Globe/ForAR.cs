@@ -105,12 +105,13 @@ namespace ArchiveRecord.Globe
 
         public static void ArchiveFill(DataGridView grid, GridSetType emunType, string strQuery,string[] strShow)
         {
-            String sConn = "Provider=sqloledb;Data Source = 172.16.34.120;Initial Catalog = sde;User Id = sa;Password = sa";
+            //String sConn = "Provider=sqloledb;Data Source = 172.16.34.120;Initial Catalog = sde;User Id = sa;Password = sa";
+            //string strStationSQL = @"SELECT  * FROM sde.KCGC";
+            String sConn = "provider=Microsoft.Jet.OLEDB.4.0;data source = E:\\Code For Working\\ArchiveRecord\\Data\\sde.mdb";
+            string strStationSQL = @"SELECT  * FROM KCGC";
             OleDbConnection mycon = new OleDbConnection(sConn);
-            //sConn = "provider=Microsoft.Jet.OLEDB.4.0;data source=" + ForBusInfo.GetProfileString("Businfo", "DataPos", Application.StartupPath + "\\Businfo.ini") + "\\data\\公交.mdb";
             mycon.Open();
-            string strStationSQL = @"SELECT  * FROM sde.KCGC";
-
+            
             string strRoadSQL = @"SELECT OBJECTID,RoadID,RoadName,RoadTravel, Company,  RoadType,FirstStartTime, FirstCloseTime, EndStartTime, EndCloseTim, TicketPrice1, 
                       TicketPrice2, TicketPrice3, RoadNo, Length, AverageLoadFactor, BusNumber, 
                       Capacity, PassengerSum, PassengerWorkSum, AverageSpeed, NulineCoefficient, 

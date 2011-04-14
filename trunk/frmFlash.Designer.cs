@@ -54,7 +54,7 @@
             // 
             // maskedTextBox1
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(256, 262);
+            this.maskedTextBox1.Location = new System.Drawing.Point(72, 262);
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.PasswordChar = '*';
             this.maskedTextBox1.Size = new System.Drawing.Size(86, 21);
@@ -62,7 +62,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(256, 235);
+            this.textBox1.Location = new System.Drawing.Point(72, 236);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(86, 21);
             this.textBox1.TabIndex = 3;
@@ -70,8 +70,8 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.Desktop;
-            this.button1.Location = new System.Drawing.Point(348, 233);
+            this.button1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button1.Location = new System.Drawing.Point(180, 235);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(77, 23);
             this.button1.TabIndex = 4;
@@ -81,8 +81,8 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.Desktop;
-            this.button2.Location = new System.Drawing.Point(348, 260);
+            this.button2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button2.Location = new System.Drawing.Point(180, 262);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(77, 23);
             this.button2.TabIndex = 4;

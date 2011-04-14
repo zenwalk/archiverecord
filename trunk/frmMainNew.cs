@@ -119,7 +119,7 @@ namespace ArchiveRecord
             axDockingPane1.FindPane(ForAR.Pan_Archive).Options = PaneOptions.PaneNoCloseable;
             //'鹰眼图：
             String sHawkEyeFileName;
-            sHawkEyeFileName = "..\\..\\data\\DataSDE.mxd";
+            sHawkEyeFileName = "..\\..\\data\\Data.mxd";
             m_frmlayerToc.MapHawkEye.LoadMxFile(sHawkEyeFileName);
             m_frmlayerToc.MapHawkEye.Extent = m_frmlayerToc.MapHawkEye.FullExtent;
             //m_frmlayerToc.m_MapControl = axMapControl1.Object;
@@ -273,7 +273,8 @@ namespace ArchiveRecord
                     {
                         string folderName = folderBrowserDialog1.SelectedPath;
                         m_frmArchivePane.m_FilePath.Clear();
-                        ForAR.FindFile(folderName+"\\",ref m_frmArchivePane.m_FilePath);
+                        m_frmArchivePane.m_strFolder = folderName;
+                        ForAR.FindFile(folderName + "\\",ref m_frmArchivePane.m_FilePath);
                         m_frmArchivePane.ReflashGrid();
                         axDockingPane1.FindPane(ForAR.Pan_Archive).Selected = true;
                         RegistryKey testKey = Registry.CurrentUser.OpenSubKey("TestKey", true);  //true表示可写，false表示只读 
