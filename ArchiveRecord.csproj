@@ -120,6 +120,7 @@
       <HintPath>..\..\..\..\..\DotNet\ESRI.ArcGIS.Controls.dll</HintPath>
       <AssemblyFolderKey>hklm\dn\arcgis desktop</AssemblyFolderKey>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.DataSourcesFile, Version=9.2.3.1380, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
     <Reference Include="ESRI.ArcGIS.Display">
       <Name>ESRI.ArcGIS.Display</Name>
       <HintPath>..\..\..\..\..\DotNet\ESRI.ArcGIS.Display.dll</HintPath>
@@ -174,6 +175,14 @@
       <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>
     </COMReference>
+    <COMReference Include="AXDBLib">
+      <Guid>{9F83C3E8-AAA3-4B0B-A256-F0DF98DA74BC}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
     <COMReference Include="AxXtremeCommandBars">
       <Guid>{555E8FCC-830E-45CC-AF00-A012D5AE7451}</Guid>
       <VersionMajor>10</VersionMajor>
@@ -216,6 +225,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.ico" />
+    <None Include="Resources\loading.gif" />
     <EmbeddedResource Include="frmFlash.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmFlash.cs</DependentUpon>
@@ -265,6 +275,12 @@
     </Compile>
     <Compile Include="frmlayerToc.Designer.cs">
       <DependentUpon>frmlayerToc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLoading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLoading.Designer.cs">
+      <DependentUpon>frmLoading.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMainNew.cs">
       <SubType>Form</SubType>
@@ -321,6 +337,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAttribute.resx">
       <DependentUpon>frmAttribute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLoading.resx">
+      <DependentUpon>frmLoading.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmQueryPan.resx">
       <DependentUpon>frmQueryPan.cs</DependentUpon>
