@@ -66,5 +66,12 @@ namespace ArchiveRecord.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        internal static System.Drawing.Bitmap UpLoading {
+            get {
+                object obj = ResourceManager.GetObject("UpLoading", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

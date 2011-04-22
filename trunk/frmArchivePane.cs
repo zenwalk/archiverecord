@@ -28,7 +28,7 @@ namespace ArchiveRecord
         public IFeature m_pFeature;
         public string m_strFolder;
 
-        frmLoading m_Popfrm;
+        frmLoading m_Popfrm = null;
         private Thread m_threadDWG;
         private event EventHandler OnDWGloaded;//加载完成引发的事件
 
@@ -40,6 +40,9 @@ namespace ArchiveRecord
         public void ReflashGrid()
         {
             dataGridView1.DataSource = m_FilePath;
+            dataGridView1.Columns["nKillPathLen"].Visible = false;
+            dataGridView1.Columns["nKillPathLen"].ValueType = typeof(int);//指定类型有设么用还不知道
+            dataGridView1.Columns["FileNameWithSuf"].Visible = false;
             dataGridView1.Columns["FileFolder"].Visible = false;
             dataGridView1.Columns["FilePath"].Visible = false;
             dataGridView1.Columns["FileName"].HeaderText = "文件名";
@@ -67,9 +70,12 @@ namespace ArchiveRecord
 
         private void button1_Click(object sender, EventArgs e)
         {
-            m_Popfrm = new frmLoading();
-            m_Popfrm.Show();
-            backgroundWorker1.RunWorkerAsync();
+            if (m_Popfrm == null)
+            {
+                m_Popfrm = new frmLoading();
+                m_Popfrm.Show();
+                backgroundWorker1.RunWorkerAsync();
+            }
             //m_threadDWG = new Thread(new ThreadStart(DWGLoad));
             //// Start the thread
             //m_threadDWG.Start();
@@ -146,6 +152,14 @@ namespace ArchiveRecord
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (m_Popfrm == null)
+            {
+                m_Popfrm = new frmLoading();
+                m_Popfrm.m_nType = 2;
+                m_Popfrm.Show();
+                backgroundWorker2.RunWorkerAsync();
+            }
+            
             //IWorkspaceFactory pWorkspaceFactory = new CadWorkspaceFactoryClass();
             //IFeatureWorkspace pFeatureWorkspace = pWorkspaceFactory.OpenFromFile(System.IO.Path.GetDirectoryName("C:\\Drawing1.dwg"), 0) as IFeatureWorkspace;
             //IFeatureDataset pFeatureDataset = pFeatureWorkspace.OpenFeatureDataset(System.IO.Path.GetFileName("C:\\Drawing1.dwg"));
@@ -181,11 +195,26 @@ namespace ArchiveRecord
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             m_Popfrm.Close();
+            m_Popfrm = null;
             System.Windows.Forms.Application.DoEvents();
             if (m_pFeature == null)
             {
                 MessageBox.Show("没有找到范围线\n", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
+        {
+            FtpDo theftp = new FtpDo("172.16.34.233",9999,"lq","lq");
+            theftp.UpLoader(m_FilePath);
+        }
+
+        private void backgroundWorker2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            m_Popfrm.Close();
+            m_Popfrm = null;
+            System.Windows.Forms.Application.DoEvents();
+            MessageBox.Show("数据上传完毕！\n", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

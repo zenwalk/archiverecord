@@ -225,6 +225,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.ico" />
+    <None Include="Resources\UpLoading.gif" />
     <None Include="Resources\loading.gif" />
     <EmbeddedResource Include="frmFlash.resx">
       <SubType>Designer</SubType>

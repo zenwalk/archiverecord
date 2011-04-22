@@ -10,71 +10,101 @@ namespace ArchiveRecord.Globe
 {
     public class FilePathInfo
     {
-            /// <summary>
-            /// Var
-            /// </summary>
-            private string _FileName = "";
-            public string FileName
-            {
-                get
-                {
-                    return _FileName;
-                }
-                set
-                {
-                    _FileName = value;
-                }
-            }
+        /// <summary>
+        /// Var
+        /// </summary>
 
-            private string _FileFolder = "";
-            public string FileFolder
+        private int _nKillPathLen = 0;
+        public int nKillPathLen
+        {
+            get
             {
-                get
-                {
-                    return _FileFolder;
-                }
-                set
-                {
-                    _FileFolder = value;
-                }
+                return _nKillPathLen;
             }
+            set
+            {
+                _nKillPathLen = value;
+            }
+        }
 
-            private string _FileSuffix = "";
-            public string FileSuffix
+        private string _FileName = "";
+        public string FileName
+        {
+            get
             {
-                get
-                {
-                    return _FileSuffix;
-                }
-                set
-                {
-                    _FileSuffix = value;
-                }
+                return _FileName;
             }
+            set
+            {
+                _FileName = value;
+            }
+        }
 
-            private string _FilePath = "";
-            public string FilePath
+        private string _FileFolder = "";
+        public string FileFolder
+        {
+            get
             {
-                get
-                {
-                    return _FilePath;
-                }
-                set
-                {
-                    _FilePath = value;
-                }
+                return _FileFolder;
             }
-            /// <summary>
-            /// EnDiningRoomName
-            /// </summary>
-            /// <param name="_DiningRoomName"></param>
-            public FilePathInfo(string FileName)
+            set
             {
-                this._FilePath = FileName;
-                this._FileName = FileName.Substring(FileName.LastIndexOf("\\") + 1, (FileName.LastIndexOf(".") - FileName.LastIndexOf("\\") - 1));
-                this._FileFolder = FileName.Substring(0, FileName.LastIndexOf("\\"));
-                this._FileSuffix = FileName.Substring(FileName.LastIndexOf(".") + 1, (FileName.Length - FileName.LastIndexOf(".") - 1));
+                _FileFolder = value;
             }
+        }
+
+        private string _FileSuffix = "";
+        public string FileSuffix
+        {
+            get
+            {
+                return _FileSuffix;
+            }
+            set
+            {
+                _FileSuffix = value;
+            }
+        }
+
+        private string _FilePath = "";
+        public string FilePath
+        {
+            get
+            {
+                return _FilePath;
+            }
+            set
+            {
+                _FilePath = value;
+            }
+        }
+
+        private string _FileNameWithSuf = "";
+        public string FileNameWithSuf
+        {
+            get
+            {
+                return _FileNameWithSuf;
+            }
+            set
+            {
+                _FileNameWithSuf = value;
+            }
+        }
+
+        /// <summary>
+        /// EnDiningRoomName
+        /// </summary>
+        /// <param name="_DiningRoomName"></param>
+        public FilePathInfo(string FileName, int nKillPathLen)
+        {
+            this._FilePath = FileName;
+            this._FileName = FileName.Substring(FileName.LastIndexOf("\\") + 1, (FileName.LastIndexOf(".") - FileName.LastIndexOf("\\") - 1));
+            this._FileFolder = FileName.Substring(0, FileName.LastIndexOf("\\"));
+            this._FileSuffix = FileName.Substring(FileName.LastIndexOf(".") + 1, (FileName.Length - FileName.LastIndexOf(".") - 1));
+            this._FileNameWithSuf = FileName.Substring(FileName.LastIndexOf("\\") + 1);
+            this._nKillPathLen = nKillPathLen;
+        }
     }
 
 
@@ -107,6 +137,7 @@ namespace ArchiveRecord.Globe
             get {return fileName;}
             set {fileName = value;}
         }
+
         public Exception OperationException
         {
             get {return operationException;}
@@ -118,58 +149,74 @@ namespace ArchiveRecord.Globe
             set {status = value;}
         }
     }
-    public class FtpUpLoader
-    {  
+
+    public class FtpDo
+    {
+        public static string m_strIP;
+        public static int m_nPort;
+        public static string m_strName;
+        public static string m_strPassword;
+
+        public FtpDo(string strIP, int nPort, string strName, string strPassword)
+        {
+            m_strIP = strIP;
+            m_nPort = nPort;
+            m_strName = strName;
+            m_strPassword = strPassword;
+        }
         // Command line arguments are two strings:
         // 1. The url that is the name of the file being uploaded to the server.
         // 2. The name of the file on the local machine.
         //
-        public static void UpLoader(string[] args)
+        public void UpLoader(List<FilePathInfo> filelist)
         {
-            // Create a Uri instance with the specified URI string.
-            // If the URI is not correctly formed, the Uri constructor
-            // will throw an exception.
-            ManualResetEvent waitObject;
-
-            Uri target = new Uri (args[0]);
-            string fileName = args[1];
-            FtpState state = new FtpState();
-            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(target);
-            request.Method = WebRequestMethods.Ftp.UploadFile;
-
-            // This example uses anonymous logon.
-            // The request is anonymous by default; the credential does not have to be specified. 
-            // The example specifies the credential only to
-            // control how actions are logged on the server.
-
-            request.Credentials = new NetworkCredential ("anonymous","janeDoe@contoso.com");
-
-            // Store the request in the object that we pass into the
-            // asynchronous operations.
-            state.Request = request;
-            state.FileName = fileName;
-
-            // Get the event to wait on.
-            waitObject = state.OperationComplete;
-
-            // Asynchronously get the stream for the file contents.
-            request.BeginGetRequestStream(
-                new AsyncCallback (EndGetStreamCallback), 
-                state
-            );
-
-            // Block the current thread until all operations are complete.
-            waitObject.WaitOne();
-
-            // The operations either completed or threw an exception.
-            if (state.OperationException != null)
+            foreach (FilePathInfo eFilePathInfo in filelist)
             {
-                throw state.OperationException;
+                // Create a Uri instance with the specified URI string.
+                // If the URI is not correctly formed, the Uri constructor
+                // will throw an exception.
+                ManualResetEvent waitObject;
+                Uri target = new Uri(string.Format("ftp://{0}:{1}/", m_strIP, m_nPort) + eFilePathInfo.FileNameWithSuf);
+                string fileName = eFilePathInfo.FilePath;
+                CheckFileExist(eFilePathInfo.FileFolder.Substring(eFilePathInfo.nKillPathLen) + "\\");
+                FtpState state = new FtpState();
+                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(target);
+                request.Credentials = new NetworkCredential(m_strName, m_strPassword);
+                request.Method = WebRequestMethods.Ftp.UploadFile;
+
+                // This example uses anonymous logon.
+                // The request is anonymous by default; the credential does not have to be specified. 
+                // The example specifies the credential only to
+                // control how actions are logged on the server.
+
+                // Store the request in the object that we pass into the
+                // asynchronous operations.
+                state.Request = request;
+                state.FileName = fileName;
+
+                // Get the event to wait on.
+                waitObject = state.OperationComplete;
+
+                // Asynchronously get the stream for the file contents.
+                request.BeginGetRequestStream(
+                    new AsyncCallback(EndGetStreamCallback),
+                    state
+                );
+
+                // Block the current thread until all operations are complete.
+                waitObject.WaitOne();
+
+                // The operations either completed or threw an exception.
+                if (state.OperationException != null)
+                {
+                    throw state.OperationException;
+                }
+                else
+                {
+                    //MessageBox.Show("The operation completed : " + state.StatusDescription, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-            else
-            {
-                MessageBox.Show("The operation completed : " + state.StatusDescription, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+           
         }
 
         private static void EndGetStreamCallback(IAsyncResult ar)
@@ -194,7 +241,7 @@ namespace ArchiveRecord.Globe
                     count += readBytes;
                 }
                 while (readBytes != 0);
-                MessageBox.Show("Writing  bytes to the stream: " + count, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Writing  bytes to the stream: " + count, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 // IMPORTANT: Close the request stream before sending the request.
                 requestStream.Close();
                 // Asynchronously get the response to the upload request.
@@ -237,6 +284,104 @@ namespace ArchiveRecord.Globe
                 state.OperationComplete.Set();
             }
         }
+
+        public void FtpMakeDir(string dirname)
+        {
+            ManualResetEvent waitObject;
+            Uri target = new Uri(string.Format("ftp://{0}:{1}/", m_strIP, m_nPort) + dirname);
+            FtpState state = new FtpState();
+            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(target);
+            request.Credentials = new NetworkCredential(m_strName, m_strPassword);
+            request.Method = WebRequestMethods.Ftp.MakeDirectory;
+
+            // This example uses anonymous logon.
+            // The request is anonymous by default; the credential does not have to be specified. 
+            // The example specifies the credential only to
+            // control how actions are logged on the server.
+
+            // Store the request in the object that we pass into the
+            // asynchronous operations.
+            state.Request = request;
+            
+            // Get the event to wait on.
+            waitObject = state.OperationComplete;
+
+            // Block the current thread until all operations are complete.
+            waitObject.WaitOne();
+
+            // The operations either completed or threw an exception.
+            if (state.OperationException != null)
+            {
+                throw state.OperationException;
+            }
+            else
+            {
+                //MessageBox.Show("The operation completed : " + state.StatusDescription, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+           
+
+                    //reqFtp.Credentials = new NetworkCredential("", "");
+                    //reqFtp.Proxy = null;
+                    //reqFtp.KeepAlive = false;
+                    //reqFtp.Method = WebRequestMethods.Ftp.MakeDirectory;
+                    //reqFtp.UseBinary = true;
+
+            }
+
+        public bool CheckFileExist(string ftpFilePath)
+        {
+            FtpWebRequest ftpWebRequest = null;
+            WebResponse webResponse = null;
+            StreamReader reader = null;
+            ftpFilePath = ftpFilePath.Replace('\\', '/');
+            try
+            {
+                int s = ftpFilePath.LastIndexOf('/');
+                if (s == ftpFilePath.Length - 1)
+                {
+                    ftpFilePath = ftpFilePath.Substring(0, ftpFilePath.Length - 1);
+                    s = ftpFilePath.LastIndexOf('/');
+                }
+
+                string ftpFileName = ftpFilePath.Substring(s + 1, ftpFilePath.Length - s - 1);
+                Uri uri = new Uri(string.Format("ftp://{0}:{1}/", m_strIP, m_nPort) + ftpFilePath.Substring(0, s + 1));
+
+                ftpWebRequest = (FtpWebRequest)FtpWebRequest.Create(uri);
+                ftpWebRequest.Credentials = new NetworkCredential(m_strName, m_strPassword);
+                ftpWebRequest.Method = WebRequestMethods.Ftp.ListDirectory;
+                ftpWebRequest.UsePassive = false;
+                ftpWebRequest.KeepAlive = false;
+                webResponse = ftpWebRequest.GetResponse();
+                reader = new StreamReader(webResponse.GetResponseStream());
+                string line = reader.ReadLine();
+                while (line != null)
+                {
+                    if (line == ftpFileName)
+                    {
+                        return true;
+                    }
+                    line = reader.ReadLine();
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+                if (webResponse != null)
+                {
+                    webResponse.Close();
+                }
+            }
+            return false;
+        }
+            
+        }
+
     }
 
-}
