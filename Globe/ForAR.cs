@@ -157,7 +157,6 @@ namespace ArchiveRecord.Globe
                         foreach (DataGridViewColumn eCol in grid.Columns)
                         {
                             eCol.ReadOnly = true;
-
                             eCol.Resizable = DataGridViewTriState.False;
                             if (!ForAR.IsChineseLetter(eCol.Name, 0))
                             {
@@ -218,7 +217,7 @@ namespace ArchiveRecord.Globe
         }
 
         //采用递归的方式遍历，文件夹和子文件中的所有文件。
-        public static void FindFile(string dirPath, ref List<FilePathInfo> FilePath) //参数dirPath为指定的目录
+        public static void FindFile(string dirPath, ref List<FilePathInfo> FilePath,int nKillPathLen) //参数dirPath为指定的目录
         {
             //在指定目录及子目录下查找文件,在listBox1中列出子目录及文件
             DirectoryInfo Dir = new DirectoryInfo(dirPath);
@@ -226,12 +225,12 @@ namespace ArchiveRecord.Globe
             {
                 foreach (DirectoryInfo d in Dir.GetDirectories())//查找子目录 
                 {
-                    FindFile(Dir + d.ToString() + "\\", ref FilePath);
+                    FindFile(Dir + d.ToString() + "\\", ref FilePath, nKillPathLen);
                     //listBox1.Items.Add(Dir+d.ToString()+"\"); //listBox1中填加目录名
                 }
                 foreach (FileInfo f in Dir.GetFiles("*.*")) //查找文件“*.---”指要访问的文件的类型的扩展名
                 {
-                    FilePath.Add(new FilePathInfo(Dir + f.ToString()));
+                    FilePath.Add(new FilePathInfo(Dir + f.ToString(),nKillPathLen));
                     //listBox1.Items.Add(Dir+f.ToString()); //listBox1中填加文件名
                 }
             }

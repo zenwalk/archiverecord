@@ -274,7 +274,7 @@ namespace ArchiveRecord
                         string folderName = folderBrowserDialog1.SelectedPath;
                         m_frmArchivePane.m_FilePath.Clear();
                         m_frmArchivePane.m_strFolder = folderName;
-                        ForAR.FindFile(folderName + "\\",ref m_frmArchivePane.m_FilePath);
+                        ForAR.FindFile(folderName + "\\", ref m_frmArchivePane.m_FilePath, folderName.LastIndexOf("\\")+1);
                         m_frmArchivePane.ReflashGrid();
                         axDockingPane1.FindPane(ForAR.Pan_Archive).Selected = true;
                         RegistryKey testKey = Registry.CurrentUser.OpenSubKey("TestKey", true);  //true表示可写，false表示只读 
