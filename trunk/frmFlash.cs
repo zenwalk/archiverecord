@@ -21,7 +21,9 @@ namespace ArchiveRecord
         [STAThread]
         static void Main()
         {
-           Application.Run(new frmMainNew());
+            ForAR.Connect_Type = 2;//初始化连接类型
+            ForAR.AppIni();
+            Application.Run(new frmFlash());
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -42,11 +44,13 @@ namespace ArchiveRecord
 
         private void button1_Click(object sender, EventArgs e)
         {
-            String sConn = "Provider=sqloledb;Data Source = 172.16.34.120;Initial Catalog=sde;User Id = sa;Password = sa";
-            //String sConn = "provider=Microsoft.Jet.OLEDB.4.0;data source=" + ForBusInfo.GetProfileString("Businfo", "DataPos", Application.StartupPath + "\\Businfo.ini") + "\\data\\公交.mdb";
-            OleDbConnection mycon = new OleDbConnection(sConn);
+            OleDbConnection mycon = new OleDbConnection(ForAR.Connect_Sql);
             mycon.Open();
-            OleDbDataAdapter da = ForAR.CreateCustomerAdapter(mycon, string.Format("select * from sde.Login where Name = '{0}'", textBox1.Text), "", "");
+            OleDbDataAdapter da;
+            if (ForAR.Connect_Type == 1)
+                da = ForAR.CreateCustomerAdapter(mycon, string.Format("select * from sde.Login where Name = '{0}'", textBox1.Text), "", "");
+            else
+                da = ForAR.CreateCustomerAdapter(mycon, string.Format("select * from Login where Name = '{0}'", textBox1.Text), "", "");
             da.SelectCommand.ExecuteNonQuery();
             DataSet ds = new DataSet();
             int nQueryCount = da.Fill(ds);

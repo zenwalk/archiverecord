@@ -119,7 +119,7 @@ namespace ArchiveRecord
             axDockingPane1.FindPane(ForAR.Pan_Archive).Options = PaneOptions.PaneNoCloseable;
             //'”•—€Õº£∫
             String sHawkEyeFileName;
-            sHawkEyeFileName = "..\\..\\data\\Data.mxd";
+            sHawkEyeFileName = ForAR.Mxd_Name;
             m_frmlayerToc.MapHawkEye.LoadMxFile(sHawkEyeFileName);
             m_frmlayerToc.MapHawkEye.Extent = m_frmlayerToc.MapHawkEye.FullExtent;
             //m_frmlayerToc.m_MapControl = axMapControl1.Object;
