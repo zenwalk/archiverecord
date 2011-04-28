@@ -23,11 +23,13 @@ namespace ArchiveRecord
         {
             try
             {
-                String sConn = "Provider=sqloledb;Data Source = 172.16.34.120;Initial Catalog=sde;User Id = sa;Password = sa";
-                //String sConn = "provider=Microsoft.Jet.OLEDB.4.0;data source=" + ForBusInfo.GetProfileString("Businfo", "DataPos", Application.StartupPath + "\\Businfo.ini") + "\\data\\公交.mdb";
-                OleDbConnection mycon = new OleDbConnection(sConn);
+                OleDbConnection mycon = new OleDbConnection(ForAR.Connect_Sql);
                 mycon.Open();
-                OleDbDataAdapter da = ForAR.CreateCustomerAdapter(mycon, "select * from sde.OPERATIONLOG ORDER BY OBJECTID DESC", "", "");
+                OleDbDataAdapter da;
+                if (ForAR.Connect_Type == 1)
+                    da = ForAR.CreateCustomerAdapter(mycon, "select * from sde.OPERATIONLOG ORDER BY OBJECTID DESC", "", "");
+                else
+                    da = ForAR.CreateCustomerAdapter(mycon, "select * from OPERATIONLOG ORDER BY OBJECTID DESC", "", "");
                 da.SelectCommand.ExecuteNonQuery();
                 DataSet ds = new DataSet();
                 int nQueryCount = da.Fill(ds);
@@ -43,18 +45,17 @@ namespace ArchiveRecord
             {
                 MessageBox.Show(ex.ToString(), "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            //Sunisoft.IrisSkin.SkinEngine se = null;
-            //se = new Sunisoft.IrisSkin.SkinEngine();
-            //se.SkinFile = Application.StartupPath + @"\Data\Diamond\DiamondBlue.ssk";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            String sConn = "Provider=sqloledb;Data Source = 172.16.34.120;Initial Catalog=sde;User Id = sa;Password = sa";
-            //String sConn = "provider=Microsoft.Jet.OLEDB.4.0;data source=" + ForBusInfo.GetProfileString("Businfo", "DataPos", Application.StartupPath + "\\Businfo.ini") + "\\data\\公交.mdb";
-            OleDbConnection mycon = new OleDbConnection(sConn);
+            OleDbConnection mycon = new OleDbConnection(ForAR.Connect_Sql);
             mycon.Open();
-            OleDbDataAdapter da = ForAR.CreateCustomerAdapter(mycon, string.Format("select * from  sde.OperationLog where (name = '{0}' and LogTime > '{1}' and LogTime < '{2}') ORDER BY OBJECTID DESC", textBox1.Text, maskedTextBox1.Text + " 00:00:00", maskedTextBox2.Text + " 24:00:00"), "", "");
+            OleDbDataAdapter da;
+            if (ForAR.Connect_Type == 1)
+                da = ForAR.CreateCustomerAdapter(mycon, string.Format("select * from  sde.OperationLog where (name = '{0}' and LogTime > '{1}' and LogTime < '{2}') ORDER BY OBJECTID DESC", textBox1.Text, maskedTextBox1.Text + " 00:00:00", maskedTextBox2.Text + " 24:00:00"), "", "");
+            else
+                da = ForAR.CreateCustomerAdapter(mycon, string.Format("select * from  OperationLog where (name = '{0}' and LogTime > '{1}' and LogTime < '{2}') ORDER BY OBJECTID DESC", textBox1.Text, maskedTextBox1.Text + " 00:00:00", maskedTextBox2.Text + " 24:00:00"), "", "");
             da.SelectCommand.ExecuteNonQuery();
             DataSet ds = new DataSet();
             int nQueryCount = da.Fill(ds);

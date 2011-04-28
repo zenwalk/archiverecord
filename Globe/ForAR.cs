@@ -41,6 +41,9 @@ namespace ArchiveRecord.Globe
         public static string Login_Operation = "";//允许操作
         public static frmMainNew m_FrmMain; //主窗体类
         public enum GridSetType { Archive_FillPan = 1, Archive_FillAll, Archive_FillByOBJECTID, Station_FillByStationName, Road_FillPan, Road_FillAll, Road_FillByOBJECTID, Road_FillByStationName };
+        public static string Connect_Sql = "";//链接数据库字符串
+        public static string Mxd_Name = "";//加载mxd
+        public static int Connect_Type = 1;//链接数据库类型1sde,2本地
 
         #endregion
 
@@ -65,16 +68,17 @@ namespace ArchiveRecord.Globe
 
         public static void Add_Log(string strName, string strOperation, string strField, string Description)
         {
-            String sConn = "Provider=sqloledb;Data Source = 172.16.34.120;Initial Catalog=sde;User Id = sa;Password = sa";
-            OleDbConnection mycon = new OleDbConnection(sConn);
-            //sConn = "provider=Microsoft.Jet.OLEDB.4.0;data source=" + ForBusInfo.GetProfileString("Businfo", "DataPos", Application.StartupPath + "\\Businfo.ini") + "\\data\\公交.mdb";
+            OleDbConnection mycon = new OleDbConnection(Connect_Sql);
             mycon.Open();
             try
             {
                 OleDbCommand pCom;
-                sConn = String.Format("insert into sde.OperationLog(Name,LogTime,Field,Operation,LogScribe) values('{0}','{1}','{2}','{3}','{4}')"
-                      , strName, DateTime.Now.ToString(), strField, strOperation, Description);
-                pCom = new OleDbCommand(sConn, mycon);
+                if (Connect_Type == 1)
+                    pCom = new OleDbCommand(String.Format("insert into sde.OperationLog(Name,LogTime,Field,Operation,LogScribe) values('{0}','{1}','{2}','{3}','{4}')"
+                          , strName, DateTime.Now.ToString(), strField, strOperation, Description), mycon);
+                else
+                    pCom = new OleDbCommand(String.Format("insert into OperationLog(Name,LogTime,Field,Operation,LogScribe) values('{0}','{1}','{2}','{3}','{4}')"
+                      , strName, DateTime.Now.ToString(), strField, strOperation, Description), mycon);
                 pCom.ExecuteNonQuery();
                 mycon.Close();
             }
@@ -105,20 +109,17 @@ namespace ArchiveRecord.Globe
 
         public static void ArchiveFill(DataGridView grid, GridSetType emunType, string strQuery,string[] strShow)
         {
-            //String sConn = "Provider=sqloledb;Data Source = 172.16.34.120;Initial Catalog = sde;User Id = sa;Password = sa";
-            //string strStationSQL = @"SELECT  * FROM sde.KCGC";
-            String sConn = "provider=Microsoft.Jet.OLEDB.4.0;data source = E:\\Code For Working\\ArchiveRecord\\Data\\sde.mdb";
-            string strStationSQL = @"SELECT  * FROM KCGC";
-            OleDbConnection mycon = new OleDbConnection(sConn);
+            OleDbConnection mycon = new OleDbConnection(Connect_Sql);
             mycon.Open();
-            
-            string strRoadSQL = @"SELECT OBJECTID,RoadID,RoadName,RoadTravel, Company,  RoadType,FirstStartTime, FirstCloseTime, EndStartTime, EndCloseTim, TicketPrice1, 
-                      TicketPrice2, TicketPrice3, RoadNo, Length, AverageLoadFactor, BusNumber, 
-                      Capacity, PassengerSum, PassengerWorkSum, AverageSpeed, NulineCoefficient, 
-                      NulineCoefficient2, Picture1, Picture2, Picture3, Picture4, Picture5, Unit, ServeArea, 
-                      AverageLength, HigeLoadFactor, RoadLoad, DirectImbalance, AlternatelyCoefficient, 
-                      TimeCoefficient, DayCoefficient, HighHourSect, HighHourArea, HighHourMass, 
-                      HighPassengerMass FROM sde.公交站线";
+             string strStationSQL, strRoadSQL;
+             if (Connect_Type == 1)
+             {
+                 strStationSQL = @"SELECT  * FROM sde.KCGC";
+             }
+             else
+             {
+                 strStationSQL = @"SELECT  * FROM KCGC";
+             }
             try
             {
                 switch (emunType)
@@ -256,7 +257,21 @@ namespace ArchiveRecord.Globe
             return s.Trim();
         }
 
-      
+        public static void AppIni()
+        {
+            string strType = "..\\..";
+            if (Connect_Type == 1)
+            {
+                Connect_Sql = "Provider=sqloledb;Data Source = 172.16.34.120;Initial Catalog=sde;User Id = sa;Password = sa";
+                Mxd_Name = strType + "\\data\\DataSDE.mxd";
+
+            }
+            else
+            {
+                Connect_Sql = "provider=Microsoft.Jet.OLEDB.4.0;data source=" + strType + "\\data\\Sde.mdb";
+                Mxd_Name = strType + "\\data\\Data.mxd";
+            }
+        }
 
     }
 }
