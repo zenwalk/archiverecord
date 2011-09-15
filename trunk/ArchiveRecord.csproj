@@ -307,6 +307,7 @@
     <Compile Include="frmQueryPan.Designer.cs">
       <DependentUpon>frmQueryPan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Globe\DataSet_ListT.cs" />
     <Compile Include="Globe\FilePathInfo.cs" />
     <Compile Include="Globe\ForAR.cs" />
     <Compile Include="Globe\ModEditOperations.cs" />

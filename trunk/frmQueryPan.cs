@@ -47,7 +47,6 @@ namespace ArchiveRecord
                 }
             }
             comboBox1.SelectedIndex = 0;
-            
         }
 
         private void dataGridView1_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -89,7 +88,45 @@ namespace ArchiveRecord
                 {
                     strInPara = String.Format("{0}{1},", strInPara, pFeature.get_Value(pFeature.Fields.FindField("OBJECTID")).ToString());
                 }
-                ForAR.ArchiveFill(dataGridView1, ForAR.GridSetType.Archive_FillByOBJECTID, string.Format(" WHERE (OBJECTID IN ({0}))", strInPara.Substring(0, strInPara.Length - 1)), new string[] { "" });
+                ForAR.ArchiveFill(dataGridView1, ForAR.GridSetType.Archive_Fill, string.Format(" WHERE (OBJECTID IN ({0}))", strInPara.Substring(0, strInPara.Length - 1)), new string[] { "" });
+            }
+        }
+
+        private void 属性编辑ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAttribute frmPopup = new frmAttribute();
+            m_featureCollection.Clear();
+            if (m_pCurFeature != null)
+            {
+                m_featureCollection.Add(m_pCurFeature);
+                frmPopup.m_featureCollection = m_featureCollection;
+                frmPopup.ShowDialog();
+            }
+        }
+
+        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            m_pCurFeature = null;
+            if (e.Button == MouseButtons.Right && e.RowIndex >= 0 && e.RowIndex <= dataGridView1.Rows.Count)
+            {
+                m_nCurRowIndex = e.RowIndex;
+                dataGridView1.Rows[m_nCurRowIndex].Selected = true;
+                contextMenuStrip1.Show(MousePosition.X, MousePosition.Y);
+                m_pCurFeature = EngineFuntions.GetOneSeartchFeature(EngineFuntions.m_Layer_BusStation, "OBJECTID = " + dataGridView1.Rows[m_nCurRowIndex].Cells["OBJECTID"].Value.ToString());
+            }
+        }
+
+        private void 定位到ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (m_pCurFeature != null)
+            {
+                IEnvelope pEnvelope;
+                pEnvelope = m_pCurFeature.Extent;
+                pEnvelope.Expand(2, 2, true);
+                EngineFuntions.m_AxMapControl.ActiveView.Extent = pEnvelope;
+                EngineFuntions.m_AxMapControl.ActiveView.ScreenDisplay.Invalidate(null, true, (short)esriScreenCache.esriAllScreenCaches);
+                System.Windows.Forms.Application.DoEvents();
+                EngineFuntions.FlashShape(m_pCurFeature.ShapeCopy);
             }
         }
     }

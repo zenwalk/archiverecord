@@ -86,8 +86,8 @@ namespace ArchiveRecord
             EngineFuntions.SetCanSelLay("");//无图层名即所有不可选
 
             EngineFuntions.m_Layer_BusStation = EngineFuntions.GetLayerByName("工程项目", colLayers);
-            EngineFuntions.m_Layer_BusRoad = EngineFuntions.GetLayerByName("公交站线", colLayers);
-            EngineFuntions.m_Layer_BackRoad = EngineFuntions.GetLayerByName("站线备份", colLayers);
+            //EngineFuntions.m_Layer_BusRoad = EngineFuntions.GetLayerByName("公交站线", colLayers);
+            //EngineFuntions.m_Layer_BackRoad = EngineFuntions.GetLayerByName("站线备份", colLayers);
 
 
             //Determine if Alpha Context is supported, if it is, then enable it
@@ -118,10 +118,10 @@ namespace ArchiveRecord
             axDockingPane1.FindPane(ForAR.Pan_Layer).Options = PaneOptions.PaneNoCloseable;
             axDockingPane1.FindPane(ForAR.Pan_Archive).Options = PaneOptions.PaneNoCloseable;
             //'鹰眼图：
-            String sHawkEyeFileName;
-            sHawkEyeFileName = ForAR.Mxd_Name;
-            m_frmlayerToc.MapHawkEye.LoadMxFile(sHawkEyeFileName);
-            m_frmlayerToc.MapHawkEye.Extent = m_frmlayerToc.MapHawkEye.FullExtent;
+            //String sHawkEyeFileName;
+            //sHawkEyeFileName = ForAR.Mxd_Name;
+            //m_frmlayerToc.MapHawkEye.LoadMxFile(sHawkEyeFileName);
+            //m_frmlayerToc.MapHawkEye.Extent = m_frmlayerToc.MapHawkEye.FullExtent;
             //m_frmlayerToc.m_MapControl = axMapControl1.Object;
             m_frmlayerToc.TOCControl.SetBuddyControl(this.axMapControl1.Object);
 

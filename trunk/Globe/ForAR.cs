@@ -40,7 +40,7 @@ namespace ArchiveRecord.Globe
         public static string Login_name = "admin"; //登录名
         public static string Login_Operation = "";//允许操作
         public static frmMainNew m_FrmMain; //主窗体类
-        public enum GridSetType { Archive_FillPan = 1, Archive_FillAll, Archive_FillByOBJECTID, Station_FillByStationName, Road_FillPan, Road_FillAll, Road_FillByOBJECTID, Road_FillByStationName };
+        public enum GridSetType { Archive_FillPan = 1, Archive_Fill};
         public static string Connect_Sql = "";//链接数据库字符串
         public static string Mxd_Name = "";//加载mxd
         public static int Connect_Type = 1;//链接数据库类型1sde,2本地
@@ -118,7 +118,7 @@ namespace ArchiveRecord.Globe
              }
              else
              {
-                 strStationSQL = @"SELECT  * FROM KCGC";
+                 strStationSQL = @"SELECT  * FROM KCDJ";
              }
             try
             {
@@ -140,14 +140,15 @@ namespace ArchiveRecord.Globe
                         }
                         if (strShow[0] == "")
                         {
-                            grid.Columns["任务号"].Visible = true;
+                            grid.Columns["工程编号"].Visible = true;
                         }
                         else
                         {
                             grid.Columns[strShow[0]].Visible = true;
                         }
+                        SetRowNo(grid);
                         break;
-                    case GridSetType.Archive_FillAll:
+                    case GridSetType.Archive_Fill:
                         da = ForAR.CreateCustomerAdapter(mycon, strStationSQL + strQuery , "", "");
                         da.SelectCommand.ExecuteNonQuery();
                         ds = new DataSet();
@@ -165,24 +166,7 @@ namespace ArchiveRecord.Globe
                             }
                             eCol.SortMode = DataGridViewColumnSortMode.NotSortable;
                         }
-                        break;
-                    case GridSetType.Archive_FillByOBJECTID:
-                        da = ForAR.CreateCustomerAdapter(mycon, strStationSQL + strQuery, "", "");
-                        da.SelectCommand.ExecuteNonQuery();
-                        ds = new DataSet();
-                        nQueryCount = da.Fill(ds, "Archive");
-                        grid.DataSource = ds;
-                        grid.DataMember = "Archive";
-                        foreach (DataGridViewColumn eCol in grid.Columns)
-                        {
-                            eCol.ReadOnly = true;
-                            eCol.Resizable = DataGridViewTriState.False;
-                            if (!ForAR.IsChineseLetter(eCol.Name, 0))
-                            {
-                                eCol.Visible = false;
-                            }
-                            eCol.SortMode = DataGridViewColumnSortMode.NotSortable;
-                        }
+                        SetRowNo(grid);
                         break;
                     default :
                         break;
@@ -192,6 +176,25 @@ namespace ArchiveRecord.Globe
             catch (System.Exception ex)
             {
                 MessageBox.Show("查询数据出错\n" + ex.ToString(), "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        //控制列排序模式
+        public static void SetColSortMode(DataGridView grid, DataGridViewColumnSortMode ColSortMode)
+        {
+            foreach (DataGridViewColumn eColumn in grid.Columns)
+            {
+
+                eColumn.SortMode = ColSortMode;
+            }
+        }
+        //在rowheard添加序号
+        public static void SetRowNo(DataGridView grid)
+        {
+            int nNum = 1;
+            foreach (DataGridViewRow eRow in grid.Rows)
+            {
+                eRow.HeaderCell.Value = nNum++.ToString();
             }
         }
 
@@ -263,12 +266,12 @@ namespace ArchiveRecord.Globe
             if (Connect_Type == 1)
             {
                 Connect_Sql = "Provider=sqloledb;Data Source = 172.16.34.120;Initial Catalog=sde;User Id = sa;Password = sa";
-                Mxd_Name = strType + "\\data\\DataSDE.mxd";
+                Mxd_Name = strType + "\\data\\kcdj.mxd";
 
             }
             else
             {
-                Connect_Sql = "provider=Microsoft.Jet.OLEDB.4.0;data source=" + strType + "\\data\\Sde.mdb";
+                Connect_Sql = "provider=Microsoft.Jet.OLEDB.4.0;data source=" + strType + "\\data\\kcdj.mdb";
                 Mxd_Name = strType + "\\data\\Data.mxd";
             }
         }

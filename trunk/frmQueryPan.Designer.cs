@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -36,8 +37,12 @@
             this.Button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.属性编辑ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.定位到ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -112,11 +117,36 @@
                         | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(3, 19);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(193, 366);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
             this.dataGridView1.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_RowHeaderMouseDoubleClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.属性编辑ToolStripMenuItem,
+            this.定位到ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(119, 48);
+            // 
+            // 属性编辑ToolStripMenuItem
+            // 
+            this.属性编辑ToolStripMenuItem.Name = "属性编辑ToolStripMenuItem";
+            this.属性编辑ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.属性编辑ToolStripMenuItem.Text = "属性编辑";
+            this.属性编辑ToolStripMenuItem.Click += new System.EventHandler(this.属性编辑ToolStripMenuItem_Click);
+            // 
+            // 定位到ToolStripMenuItem
+            // 
+            this.定位到ToolStripMenuItem.Name = "定位到ToolStripMenuItem";
+            this.定位到ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.定位到ToolStripMenuItem.Text = "定位到";
+            this.定位到ToolStripMenuItem.Click += new System.EventHandler(this.定位到ToolStripMenuItem_Click);
             // 
             // frmQueryPan
             // 
@@ -132,6 +162,7 @@
             this.Load += new System.EventHandler(this.frmQueryPan_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,5 +177,8 @@
         internal System.Windows.Forms.Button Button1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 属性编辑ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 定位到ToolStripMenuItem;
     }
 }
