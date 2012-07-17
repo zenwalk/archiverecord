@@ -41,7 +41,7 @@ namespace ArchiveRecord
             RefreshGrid();
             foreach (DataGridViewColumn eCol in dataGridView1.Columns)
             {
-                if (ForAR.IsChineseLetter(eCol.Name, 0))
+                if (eCol.Name != "ID" && ForAR.IsChineseLetter(eCol.Name, 0))
                 {
                     comboBox1.Items.Add(eCol.Name);
                 }
@@ -128,6 +128,19 @@ namespace ArchiveRecord
                 System.Windows.Forms.Application.DoEvents();
                 EngineFuntions.FlashShape(m_pCurFeature.ShapeCopy);
             }
+        }
+
+        private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (m_pCurFeature != null)
+            {
+                if (MessageBox.Show(string.Format("确认删除工程：{0}!", m_pCurFeature.get_Value(m_pCurFeature.Fields.FindField("任务号"))), "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+                {
+                    m_pCurFeature.Delete();
+                    dataGridView1.Rows.RemoveAt(m_nCurRowIndex);
+                }
+            }
+            EngineFuntions.m_AxMapControl.ActiveView.Refresh();
         }
     }
 }
