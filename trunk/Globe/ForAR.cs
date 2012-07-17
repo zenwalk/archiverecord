@@ -118,7 +118,7 @@ namespace ArchiveRecord.Globe
              }
              else
              {
-                 strStationSQL = @"SELECT  * FROM KCDJ";
+                 strStationSQL = @"SELECT  * FROM Project";
              }
             try
             {
@@ -140,7 +140,7 @@ namespace ArchiveRecord.Globe
                         }
                         if (strShow[0] == "")
                         {
-                            grid.Columns["工程编号"].Visible = true;
+                            grid.Columns["任务号"].Visible = true;
                         }
                         else
                         {
@@ -160,7 +160,7 @@ namespace ArchiveRecord.Globe
                         {
                             eCol.ReadOnly = true;
                             eCol.Resizable = DataGridViewTriState.False;
-                            if (!ForAR.IsChineseLetter(eCol.Name, 0))
+                            if (eCol.Name != "ID" && !ForAR.IsChineseLetter(eCol.Name, 0))
                             {
                                 eCol.Visible = false;
                             }
@@ -266,12 +266,12 @@ namespace ArchiveRecord.Globe
             if (Connect_Type == 1)
             {
                 Connect_Sql = "Provider=sqloledb;Data Source = 172.16.34.120;Initial Catalog=sde;User Id = sa;Password = sa";
-                Mxd_Name = strType + "\\data\\kcdj.mxd";
+                Mxd_Name = strType + "\\data\\Sde.mxd";
 
             }
             else
             {
-                Connect_Sql = "provider=Microsoft.Jet.OLEDB.4.0;data source=" + strType + "\\data\\kcdj.mdb";
+                Connect_Sql = "provider=Microsoft.Jet.OLEDB.4.0;data source=" + strType + "\\data\\Data.mdb";
                 Mxd_Name = strType + "\\data\\Data.mxd";
             }
         }

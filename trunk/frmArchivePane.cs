@@ -61,6 +61,13 @@ namespace ArchiveRecord
             dataGridView1.Columns[0].ReadOnly = false;
             
             textBox2.Text = m_strFolder.Substring(m_strFolder.LastIndexOf("\\") + 1);
+
+            string str = "";
+            foreach (FilePathInfo ff in m_FilePath) //查找文件“*.---”指要访问的文件的类型的扩展名
+            {
+                str = str + ff.FileName + "-";
+            }
+            string strsss = "";
         }
 
         private void frmArchivePane_Load(object sender, EventArgs e)
@@ -183,7 +190,7 @@ namespace ArchiveRecord
                 m_pFeature = EngineFuntions.m_Layer_BusStation.FeatureClass.CreateFeature();
                 m_pFeature.Shape = pGeometryCollection as IPolygon;
                 IFields fields = m_pFeature.Fields;
-                int nIndex = fields.FindField("工程编号");
+                int nIndex = fields.FindField("任务号");
                 m_pFeature.set_Value(nIndex, m_strFolder.Substring(m_strFolder.LastIndexOf("\\") + 1));
                 m_pFeature.Store();
                 EngineFuntions.ZoomTo(m_pFeature.ShapeCopy);
@@ -256,7 +263,8 @@ namespace ArchiveRecord
 
         private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
         {
-            CopyDirectory(m_strFolder, "Z:\\" + m_strFolder.Substring(m_strFolder.LastIndexOf("\\") + 1));
+            string strRemoteDir = m_strFolder.Substring(m_strFolder.LastIndexOf("\\") + 1);
+            CopyDirectory(m_strFolder, string.Format("Z:\\{0}\\{1}",strRemoteDir.Substring(0,4),strRemoteDir));
             //FtpDo theftp = new FtpDo("172.16.34.233",9999,"lq","lq");
             //theftp.UpLoader(m_FilePath);
         }
